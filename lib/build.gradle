@@ -16,7 +16,7 @@ plugins {
     // Apply this plugin to publish build artifacts to an Apache Maven repository
     id 'maven-publish'
 
-    // Plugin to sign the files that will be published to the Maven Central repo 
+    // Used for signing the artifacts that will be published
     id 'signing'
 }
 
@@ -26,5 +26,5 @@ library {
 }
 
 signing {
-    sign configurations.archives
+    sign publishing.publications.mavenJava
 }
