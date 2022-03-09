@@ -20,6 +20,9 @@ plugins {
     id 'signing'
 }
 
+group = 'io.github.mhqz'
+version = '1.0'
+
 library {
     // Set the target operating system and architecture for this library
     targetMachines.add(machines.linux.x86_64)
