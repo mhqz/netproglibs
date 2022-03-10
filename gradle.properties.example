@@ -1,0 +1,9 @@
+# It's recommended to use a different key only for signing purposes
+signing.keyId=01234567
+
+# This should be moved to env vars
+signing.password=YourGpgKeyPassphrase
+
+# You can export it with the following command:
+# gpg --export-secret-key 01234567 > secret-key.pgp
+signing.secretKeyRingFile=/path/to/the/secret-key.pgp
