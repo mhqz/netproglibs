@@ -1,0 +1,7 @@
+signing.keyId=0123ABCD
+signing.password=PasswordForTheSigningKey
+signing.secretKeyRingFile=/path/to/the/signing/key/used/for/releases.pgp
+
+ossrhUsername=user
+ossrhPassword=OSSRHPassword
+sonatypeStagingProfileId=0123456789ABCD
