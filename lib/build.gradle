@@ -12,61 +12,18 @@ plugins {
 
     // Apply the cpp-unit-test plugin to add support for building and running C++ test executables
     id 'cpp-unit-test'
-
-    // Apply this plugin to publish build artifacts to an Apache Maven repository
-    id 'maven-publish'
-
-    // Used for signing the artifacts that will be published
-    id 'signing'
 }
-
-group = 'io.github.mhqz'
-version = '1.0'
 
 library {
     // Set the target operating system and architecture for this library
     targetMachines.add(machines.linux.x86_64)
 }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifactId = 'netproglibs'
-            pom {
-                name = 'NetProg libs'
-                description = 'C++ libraries and AARs for experimenting with p2p networks'
-                url = 'https://github.com/mhqz/netproglibs'
-                licenses {
-                    license {
-                        name = 'The Apache License, Version 2.0'
-                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    }
-                }
-                developers {
-                    developer {
-                        id = 'mhqz'
-                        name = 'mhqz'
-                        email = 'user@example.com'
-                    }
-                }
-                scm {
-                    connection = 'scm:git:git://github.com/mhqz/netproglibs.git'
-                    developerConnection = 'scm:git:ssh://github.com/mhqz/netproglibs.git'
-                    url = 'https://github.com/mhqz/netproglibs'
-                }
-            }
-        }
-    }
-    repositories {
-        maven {
-            // change URLs to point to your repos, e.g. http://my.org/repo
-            def releasesRepoUrl = layout.buildDirectory.dir('repos/releases')
-            def snapshotsRepoUrl = layout.buildDirectory.dir('repos/snapshots')
-            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
-        }
-    }
+ext {
+    // Provide your own coordinates here
+    PUBLISH_GROUP_ID = 'io.github.mhqz'
+    PUBLISH_VERSION = '0.2.0'
+    PUBLISH_ARTIFACT_ID = 'netproglibs'
 }
 
-signing {
-    sign publishing.publications.mavenJava
-}
+apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
